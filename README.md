@@ -1,7 +1,9 @@
 ```markdown
 # CerberusX Extension for VS Code
 
-A comprehensive VS Code extension providing full language support for CerberusX programming language, including syntax highlighting, IntelliSense, code snippets, integrated build tools, and **debugging capabilities**.
+A comprehensive VS Code extension providing full language support for CerberusX programming language.
+
+This extension includes syntax highlighting, IntelliSense, code snippets, integrated build tools, and **debugging capabilities** to enhance your CerberusX game development workflow.
 
 ## Features
 
