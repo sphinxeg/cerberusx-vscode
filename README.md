@@ -286,26 +286,6 @@ Launch the Extension Development Host (F5) in VS Code to debug and test changes.
 - 🐛 Made language server optional for graceful activation
 - 📝 Improved error notifications with actionable messages
 
-## Contributing
-
-Contributions are welcome! Please feel free to submit issues and pull requests.
-
-## License
-
-MIT License - see LICENSE.md for details
-
----
-
-**Enjoy coding with CerberusX!** 🎮
-
----
-
-**Enjoy coding with CerberusX!** 🎮
-
-## Advanced Configuration
-
-### trancc Command Templates
-
 ## Advanced Configuration
 
 ### trancc Command Templates
@@ -365,4 +345,15 @@ Use different trancc executables per OS:
   }
 }
 ```
-```
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit issues and pull requests.
+
+## License
+
+MIT License - see LICENSE.md for details
+
+---
+
+**Enjoy coding with CerberusX!** 🎮
