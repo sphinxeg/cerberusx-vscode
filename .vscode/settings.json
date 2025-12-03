@@ -1,0 +1,9 @@
+{
+    "cerberusx.testing": false,
+    "cerberusx.tranccTargetMap": {
+        "html5": "Html5_Game",
+        "glfw": "Desktop_Game",
+        "android": "android",
+        "ios": "ios"
+    }
+}

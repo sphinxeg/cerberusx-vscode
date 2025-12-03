@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360">
+  <rect width="100%" height="100%" fill="#111827" />
+  <text x="50%" y="36%" font-family="Segoe UI, Roboto, Arial" font-size="24" fill="#fff" text-anchor="middle">Debug Terminal</text>
+  <text x="50%" y="52%" font-family="Segoe UI, Roboto, Arial" font-size="14" fill="#ddd" text-anchor="middle">Launch program in integrated terminal (placeholder)</text>
+  <rect x="80" y="220" width="480" height="80" rx="6" fill="#0f1724" stroke="#1f2937" />
+  <text x="100" y="246" font-family="Courier New, monospace" font-size="12" fill="#9ca3af">C:\CerberusX\transcc_winnt.exe -run -config=debug -target=Html5_Game "src/main.cerberusdoc"</text>
+</svg>

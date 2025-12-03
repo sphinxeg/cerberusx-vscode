@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-label="CerberusX Dark">
+  <rect width="128" height="128" rx="16" fill="#0b1220" />
+  <g transform="translate(16,16)">
+    <circle cx="48" cy="48" r="48" fill="#e52e71" />
+    <text x="48" y="66" font-family="Segoe UI, Roboto, Arial" font-size="56" font-weight="700" text-anchor="middle" fill="#ffffff">C</text>
+  </g>
+</svg>

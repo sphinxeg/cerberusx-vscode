@@ -1,0 +1,107 @@
+{
+    "comments": {
+        "lineComment": "'",
+        "blockComment": [
+            "#Rem",
+            "#End",
+        ]
+    },
+    "brackets": [
+        [
+            "{",
+            "}"
+        ],
+        [
+            "[",
+            "]"
+        ],
+        [
+            "(",
+            ")"
+        ]
+    ],
+    "autoClosingPairs": [
+        {
+            "open": "{",
+            "close": "}",
+            "notIn": [
+                "string",
+                "comment"
+            ]
+        },
+        {
+            "open": "[",
+            "close": "]",
+            "notIn": [
+                "string",
+                "comment"
+            ]
+        },
+        {
+            "open": "(",
+            "close": ")",
+            "notIn": [
+                "string",
+                "comment"
+            ]
+        },
+        {
+            "open": "\"",
+            "close": "\"",
+            "notIn": [
+                "string",
+                "comment"
+            ]
+        }
+    ],
+    "surroundingPairs": [
+        [
+            "{",
+            "}"
+        ],
+        [
+            "[",
+            "]"
+        ],
+        [
+            "(",
+            ")"
+        ],
+        [
+            "\"",
+            "\""
+        ]
+    ],
+    "folding": {
+        "markers": {
+            "start": "(?:^|;)\\s*\\b[rR][eE][mM]\\b",
+            "end": "(?:^|;)\\s*\\b[eE][nN][dD]\\s?[rR][eE][mM]\\b",
+        }
+    },
+    "indentationRules": {
+        "increaseIndentPattern": {
+            "pattern": "((^\\s*(\\w+\\s+)?|;\\s*)\\b((Function|Method|Interface|While|For|Select|Catch)\\s+|(Repeat|(?<!\\bEnd\\s+)Try))(?!.*\\s+Abstract\\b)(?!.*;\\s*End\\s*\\3\\b(\\s*$|\\s*'))|(^|;)\\s*\\b(If|Else|Else\\s*If)\\b)",
+            "flags": "i"
+        },
+        "decreaseIndentPattern": {
+            "pattern": "((^\\s*(\\w+\\s+)?|;\\s*)\\b(End\\s*(Function|Method|Interface|While|Select|Try)|Wend|Until|Catch|Forever|Next|Else|Else\\s*If|End\\s*If)\\b)",
+            "flags": "i"
+        },
+        "unIndentedLinePattern": {
+            "pattern": "(^|;)\\s*\\bIf\\b(.*Then\\s+\\w+|.*(?!If|Then|Or|And|Not)(\\b(?<!'.*)\\w+|\\)|\")\\s+(?!If|Then|Or|And|Not)\\w+|.*;\\s*\\w+\\s*($|'))",
+            "flags": "i"
+        },
+        "indentNextLinePattern": ".*\\.\\.(\\s*|\\s*'.*)$"
+    },
+    "onEnterRules": [
+        {
+            "previousLineText": "(?:^|;)\\s*\\?\\s*",
+            "beforeText": "(?:^|;)\\s*$",
+            "afterText": "^\\s*$",
+            "action": {
+                "indent": "outdent",
+                "appendText": "?"
+            }
+        }
+    ]
+}

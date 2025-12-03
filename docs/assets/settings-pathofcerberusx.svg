@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360">
+  <rect width="100%" height="100%" fill="#ffffff" />
+  <text x="50%" y="40%" font-family="Segoe UI, Roboto, Arial" font-size="24" fill="#111" text-anchor="middle">Settings</text>
+  <text x="50%" y="55%" font-family="Segoe UI, Roboto, Arial" font-size="16" fill="#333" text-anchor="middle">PathOfCerberusX configuration (placeholder)</text>
+  <rect x="120" y="220" width="400" height="28" rx="4" fill="#eef2ff" stroke="#c7d2fe" />
+  <text x="320" y="238" font-family="Segoe UI, Roboto, Arial" font-size="13" fill="#111" text-anchor="middle">C:\path\to\CerberusX</text>
+</svg>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-label="CerberusX">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#ff8a00" />
+      <stop offset="1" stop-color="#e52e71" />
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="16" fill="#111827" />
+  <g transform="translate(16,16)">
+    <circle cx="48" cy="48" r="48" fill="url(#g)" />
+    <text x="48" y="66" font-family="Segoe UI, Roboto, Arial" font-size="56" font-weight="700" text-anchor="middle" fill="white">C</text>
+  </g>
+</svg>

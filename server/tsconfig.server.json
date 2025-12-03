@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es2020",
+        "outDir": "../out/server",
+        "lib": [
+            "es2020"
+        ],
+        "sourceMap": true,
+        "rootDir": "..",
+        "strict": true,
+        "esModuleInterop": true,
+        "resolveJsonModule": true,
+        "types": [
+            "node"
+        ]
+    },
+    "include": [
+        "src/**/*",
+        "../src/parser.ts"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}

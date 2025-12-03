@@ -1,0 +1,21 @@
+# Exclude generated icon PNGs and large image variants from the VS Code extension package
+# Keep SVG sources in the repo; do not include generated PNGs unless you explicitly want them
+
+# exclude generated PNGs at the repo root resources/
+resources/icon-32.png
+resources/icon-*.png
+
+# exclude theme PNG variants
+resources/light/icon.png
+resources/dark/icon.png
+
+# allow the primary extension icon; still exclude other PNGs
+!resources/icon.png
+**/*.png
+
+# Do not publish scripts that are only for local icon generation
+scripts/generate-icons.ps1
+docs/assets/*.gif
+docs/raw/*.mp4
+out/test
+.vscode-test

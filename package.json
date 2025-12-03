@@ -1,0 +1,332 @@
+{
+    "name": "cerberusx",
+    "displayName": "CerberusX",
+    "description": "CerberusX Programming Language extension for VS Code",
+    "version": "0.3.1",
+    "publisher": "AncientSoft",
+    "author": {
+        "name": "Sphinx (Maher F. Farag)",
+        "email": "ancientsoft@hotmail.com"
+    },
+    "license": "MIT",
+    "engines": {
+        "vscode": "^1.70.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "activationEvents": [
+        "onStartupFinished"
+    ],
+    "main": "./out/extension.js",
+    "icon": "resources/icon.png",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/sphinxeg/cerberusx-vscode.git"
+    },
+    "homepage": "https://github.com/sphinxeg/cerberusx-vscode#readme",
+    "bugs": {
+        "url": "https://github.com/sphinxeg/cerberusx-vscode/issues"
+    },
+    "contributes": {
+        "viewsContainers": {
+            "activitybar": [
+                {
+                    "id": "cerberusx",
+                    "title": "CerberusX",
+                    "icon": "$(game)"
+                }
+            ]
+        },
+        "views": {
+            "cerberusx": [
+                {
+                    "type": "webview",
+                    "id": "cerberusxSidebar",
+                    "name": "CerberusX"
+                }
+            ]
+        },
+        "languages": [
+            {
+                "id": "cerberusx",
+                "aliases": [
+                    "CerberusX",
+                    "cerberusx"
+                ],
+                "extensions": [
+                    ".cxs",
+                    ".cerberusdoc"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "cerberusx",
+                "scopeName": "source.cerberusx",
+                "path": "./syntaxes/cerberusx.tmLanguage.json"
+            }
+        ],
+        "snippets": [
+            {
+                "language": "cerberusx",
+                "path": "./snippets/cerberusx.code-snippets"
+            }
+        ],
+        "commands": [
+            {
+                "command": "cerberusx.refreshKeywords",
+                "title": "CerberusX: Refresh Keywords"
+            },
+            {
+                "command": "cerberusx.openDocumentation",
+                "title": "CerberusX: Open Documentation"
+            },
+            {
+                "command": "cerberusx.selectBuildMode",
+                "title": "CerberusX: Select Build Mode"
+            },
+            {
+                "command": "cerberusx.selectTargetPlatform",
+                "title": "CerberusX: Select Target Platform"
+            },
+            {
+                "command": "cerberusx.build",
+                "title": "CerberusX: Build Project"
+            },
+            {
+                "command": "cerberusx.generateSnippets",
+                "title": "CerberusX: Generate Snippets"
+            },
+            {
+                "command": "cerberusx.buildWithTrancc",
+                "title": "CerberusX: Build with trancc"
+            },
+            {
+                "command": "cerberusx.buildAndRunWithTrancc",
+                "title": "CerberusX: Build and Run with trancc"
+            }
+        ],
+        "configuration": {
+            "type": "object",
+            "title": "CerberusX",
+            "properties": {
+                "cerberusx.buildMode": {
+                    "type": "string",
+                    "enum": [
+                        "debug",
+                        "release"
+                    ],
+                    "default": "debug",
+                    "order": 2,
+                    "description": "Choose build mode"
+                },
+                "cerberusx.targetPlatform": {
+                    "type": "string",
+                    "enum": [
+                        "html5",
+                        "glfw",
+                        "cpptool",
+                        "android",
+                        "ios"
+                    ],
+                    "default": "html5",
+                    "order": 3,
+                    "description": "Default target platform for builds"
+                },
+                "cerberusx.tokenExtractionRegex": {
+                    "type": "string",
+                    "default": "\\\\b[A-Za-z_][A-Za-z0-9_]{2,}\\\\b",
+                    "scope": "application",
+                    "order": 100,
+                    "tags": ["advanced"],
+                    "description": "[Advanced] A JS-style string regex used to extract tokens from .cerberusdoc files. Default extracts words with length >= 3. Must be a valid RegExp source string (without slashes)."
+                },
+                "cerberusx.snippetsFile": {
+                    "type": "string",
+                    "default": ".vscode/cerberusx-snippets.code-snippets",
+                    "scope": "application",
+                    "order": 101,
+                    "tags": ["advanced"],
+                    "description": "[Advanced] Where generated snippets are written (relative to workspace root)."
+                },
+                "cerberusx.PathOfCerberusX": {
+                    "type": "string",
+                    "default": "",
+                    "order": 1,
+                    "description": "Path to the CerberusX root folder"
+                },
+                "cerberusx.tranccPath": {
+                    "type": "string",
+                    "default": "trancc",
+                    "scope": "application",
+                    "order": 102,
+                    "tags": ["advanced"],
+                    "description": "[Advanced] Fallback path to the trancc CLI executable. Auto-detected, no need to change."
+                },
+                "cerberusx.tranccBuildArgs": {
+                    "type": "string",
+                    "default": "-build -config=${mode} -target=${target} ${file}",
+                    "scope": "application",
+                    "order": 103,
+                    "tags": ["advanced"],
+                    "description": "[Advanced] Template for build arguments. Default works automatically."
+                },
+                "cerberusx.tranccRunArgs": {
+                    "type": "string",
+                    "default": "-run -config=${mode} -target=${target} ${file}",
+                    "scope": "application",
+                    "order": 104,
+                    "tags": ["advanced"],
+                    "description": "[Advanced] Template for run arguments. Default works automatically."
+                },
+                "cerberusx.tranccTargetMap": {
+                    "type": "object",
+                    "default": {
+                        "html5": "Html5_Game",
+                        "glfw": "Desktop_Game",
+                        "cpptool": "C++_Tool",
+                        "android": "Android_Game",
+                        "ios": "iOS_Game"
+                    },
+                    "scope": "application",
+                    "order": 105,
+                    "tags": ["advanced"],
+                    "description": "[Advanced] Platform target mappings. Default works automatically."
+                },
+                "cerberusx.tranccExecutableMap": {
+                    "type": "object",
+                    "default": {
+                        "win32": "transcc_winnt.exe",
+                        "linux": "transcc_linux",
+                        "darwin": "transcc_macos"
+                    },
+                    "scope": "application",
+                    "order": 106,
+                    "tags": ["advanced"],
+                    "description": "[Advanced] OS-specific compiler names. Auto-detected, no need to change."
+                },
+                "cerberusx.testing": {
+                    "type": "boolean",
+                    "default": false,
+                    "scope": "application",
+                    "order": 200,
+                    "tags": ["internal"],
+                    "deprecationMessage": "Internal use only. Do not modify.",
+                    "description": "[Internal] Testing mode for developers only."
+                },
+                "cerberusx.lastCommand": {
+                    "type": "string",
+                    "default": "",
+                    "scope": "application",
+                    "order": 201,
+                    "tags": ["internal"],
+                    "deprecationMessage": "Internal use only. Do not modify.",
+                    "description": "[Internal] For tests only."
+                },
+                "cerberusx.tranccOutput": {
+                    "type": "string",
+                    "default": "terminal",
+                    "enum": [
+                        "terminal",
+                        "output"
+                    ],
+                    "scope": "application",
+                    "order": 107,
+                    "tags": ["advanced"],
+                    "description": "[Advanced] Where build output is shown. Default works automatically."
+                }
+            }
+        },
+        "debuggers": [
+            {
+                "type": "cerberusx",
+                "label": "CerberusX Debug",
+                "languages": [
+                    "cerberusx"
+                ],
+                "configurationAttributes": {
+                    "launch": {
+                        "properties": {
+                            "program": {
+                                "type": "string",
+                                "description": "Path to .cxs file to debug"
+                            },
+                            "mode": {
+                                "type": "string",
+                                "enum": [
+                                    "debug",
+                                    "release"
+                                ]
+                            },
+                            "platform": {
+                                "type": "string",
+                                "enum": [
+                                    "html5",
+                                    "glfw",
+                                    "android",
+                                    "ios"
+                                ]
+                            }
+                        },
+                        "required": [
+                            "program"
+                        ]
+                    }
+                },
+                "initialConfigurations": [
+                    {
+                        "name": "CerberusX: Debug Current File",
+                        "type": "cerberusx",
+                        "request": "launch",
+                        "program": "${file}",
+                        "mode": "debug",
+                        "platform": "glfw"
+                    }
+                ]
+            }
+        ],
+        "breakpoints": [
+            {
+                "language": "cerberusx"
+            }
+        ],
+        "keybindings": [
+            {
+                "command": "cerberusx.openDocumentation",
+                "key": "ctrl+f1",
+                "mac": "cmd+f1",
+                "when": "editorTextFocus && editorLangId == cerberusx"
+            }
+        ]
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "npm run compile:ext && npm run compile:server && npm run copy:server",
+        "compile:ext": "tsc -p ./",
+        "compile:server": "tsc -p ./server/tsconfig.server.json",
+        "copy:server": "powershell -Command \"if (Test-Path 'out/server/server/src/server.js') { New-Item -ItemType Directory -Force -Path 'server/out' | Out-Null; Copy-Item 'out/server/server/src/server.js*' 'server/out/' }\"",
+        "watch": "concurrently \"tsc -watch -p .\" \"tsc -watch -p server/tsconfig.server.json\"",
+        "build:test": "tsc -p ./test/tsconfig.json",
+        "pretest": "npm run build:test",
+        "test": "mocha --colors \"out/test/suite\" --exit",
+        "test:integration": "npm run build:test && node ./out/test/runIntegrationTest.js"
+    },
+    "devDependencies": {
+        "@types/node": "^18.0.0",
+        "@types/vscode": "^1.70.0",
+        "typescript": "^4.9.0",
+        "concurrently": "^7.0.0",
+        "@vscode/test-electron": "^2.4.0",
+        "mocha": "^10.2.0",
+        "glob": "^10.2.0",
+        "@types/mocha": "^10.0.1",
+        "@types/glob": "^8.1.0"
+    },
+    "dependencies": {
+        "vscode-languageclient": "^8.0.1",
+        "vscode-languageserver": "^9.0.0",
+        "vscode-languageserver-textdocument": "^1.0.0"
+    }
+}

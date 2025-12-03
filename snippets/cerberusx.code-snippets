@@ -1,0 +1,573 @@
+{
+    "Class Definition": {
+        "prefix": "class",
+        "body": [
+            "Class ${1:ClassName}${2: Extends ${3:SuperClass}}",
+            "\t${0:' Class body}",
+            "End"
+        ],
+        "description": "Create a new class"
+    },
+    "Method Definition": {
+        "prefix": "method",
+        "body": [
+            "Method ${1:MethodName}:${2:Void}(${3:})",
+            "\t${0:' Method body}",
+            "End"
+        ],
+        "description": "Create a method"
+    },
+    "Function Definition": {
+        "prefix": "function",
+        "body": [
+            "Function ${1:FunctionName}:${2:Void}(${3:})",
+            "\t${0:' Function body}",
+            "End"
+        ],
+        "description": "Create a function"
+    },
+    "Field Declaration": {
+        "prefix": "field",
+        "body": [
+            "Field ${1:fieldName}:${2:Int}${3: = ${4:0}}"
+        ],
+        "description": "Declare a field"
+    },
+    "Global Declaration": {
+        "prefix": "global",
+        "body": [
+            "Global ${1:globalName}:${2:Int}${3: = ${4:0}}"
+        ],
+        "description": "Declare a global variable"
+    },
+    "Local Declaration": {
+        "prefix": "local",
+        "body": [
+            "Local ${1:localName}:${2:Int}${3: = ${4:0}}"
+        ],
+        "description": "Declare a local variable"
+    },
+    "Const Declaration": {
+        "prefix": "const",
+        "body": [
+            "Const ${1:CONSTANT_NAME}:${2:Int} = ${3:0}"
+        ],
+        "description": "Declare a constant"
+    },
+    "If Statement": {
+        "prefix": "if",
+        "body": [
+            "If ${1:condition}",
+            "\t${0:' Code}",
+            "End"
+        ],
+        "description": "If statement"
+    },
+    "If-Else Statement": {
+        "prefix": "ifelse",
+        "body": [
+            "If ${1:condition}",
+            "\t${2:' True code}",
+            "Else",
+            "\t${0:' False code}",
+            "End"
+        ],
+        "description": "If-else statement"
+    },
+    "For Loop": {
+        "prefix": "for",
+        "body": [
+            "For Local ${1:i}:Int = ${2:0} To ${3:10}${4: Step ${5:1}}",
+            "\t${0:' Loop body}",
+            "Next"
+        ],
+        "description": "For loop"
+    },
+    "While Loop": {
+        "prefix": "while",
+        "body": [
+            "While ${1:condition}",
+            "\t${0:' Loop body}",
+            "Wend"
+        ],
+        "description": "While loop"
+    },
+    "Repeat-Until Loop": {
+        "prefix": "repeat",
+        "body": [
+            "Repeat",
+            "\t${0:' Loop body}",
+            "Until ${1:condition}"
+        ],
+        "description": "Repeat-until loop"
+    },
+    "Select-Case Statement": {
+        "prefix": "select",
+        "body": [
+            "Select ${1:expression}",
+            "\tCase ${2:value1}",
+            "\t\t${3:' Code}",
+            "\tCase ${4:value2}",
+            "\t\t${5:' Code}",
+            "\tDefault",
+            "\t\t${0:' Default code}",
+            "End"
+        ],
+        "description": "Select-case statement"
+    },
+    "Try-Catch Block": {
+        "prefix": "try",
+        "body": [
+            "Try",
+            "\t${1:' Code that might throw}",
+            "Catch ${2:err:Throwable}",
+            "\t${0:' Error handling}",
+            "End"
+        ],
+        "description": "Try-catch block"
+    },
+    "Import Module": {
+        "prefix": "import",
+        "body": [
+            "Import ${1:modulename}"
+        ],
+        "description": "Import a module"
+    },
+    "Print Statement": {
+        "prefix": "print",
+        "body": [
+            "Print ${1:\"${2:text}\"}"
+        ],
+        "description": "Print to console"
+    },
+    "New Object": {
+        "prefix": "new",
+        "body": [
+            "New ${1:ClassName}(${2:})"
+        ],
+        "description": "Create new object instance"
+    },
+    "Array Declaration": {
+        "prefix": "array",
+        "body": [
+            "Local ${1:arrayName}:${2:Int}[] = New ${2:Int}[${3:10}]"
+        ],
+        "description": "Declare an array"
+    },
+    "Interface Definition": {
+        "prefix": "interface",
+        "body": [
+            "Interface ${1:InterfaceName}",
+            "\tMethod ${2:MethodName}:${3:Void}(${4:})",
+            "End"
+        ],
+        "description": "Define an interface"
+    },
+    "Property Definition": {
+        "prefix": "property",
+        "body": [
+            "Method ${1:PropertyName}:${2:Int}() Property",
+            "\tReturn ${3:_${1:propertyName}}",
+            "End",
+            "",
+            "Method ${1:PropertyName}:Void(${4:value}:${2:Int}) Property",
+            "\t${3:_${1:propertyName}} = ${4:value}",
+            "End"
+        ],
+        "description": "Create a property with getter and setter"
+    },
+    "OnCreate Method": {
+        "prefix": "oncreate",
+        "body": [
+            "Method OnCreate:Int()",
+            "\t${0:' Initialization code}",
+            "\tReturn 0",
+            "End"
+        ],
+        "description": "OnCreate method for Mojo app"
+    },
+    "OnUpdate Method": {
+        "prefix": "onupdate",
+        "body": [
+            "Method OnUpdate:Int()",
+            "\t${0:' Update logic}",
+            "\tReturn 0",
+            "End"
+        ],
+        "description": "OnUpdate method for Mojo app"
+    },
+    "OnRender Method": {
+        "prefix": "onrender",
+        "body": [
+            "Method OnRender:Int()",
+            "\tCls ${1:0, 0, 0}",
+            "\t${0:' Rendering code}",
+            "\tReturn 0",
+            "End"
+        ],
+        "description": "OnRender method for Mojo app"
+    },
+    "Basic Mojo App": {
+        "prefix": "mojoapp",
+        "body": [
+            "Strict",
+            "",
+            "Import mojo",
+            "",
+            "Class ${1:MyApp} Extends App",
+            "\tMethod OnCreate:Int()",
+            "\t\tSetUpdateRate ${2:60}",
+            "\t\tReturn 0",
+            "\tEnd",
+            "\t",
+            "\tMethod OnUpdate:Int()",
+            "\t\t${3:' Update logic}",
+            "\t\tReturn 0",
+            "\tEnd",
+            "\t",
+            "\tMethod OnRender:Int()",
+            "\t\tCls ${4:0, 0, 0}",
+            "\t\t${0:' Rendering code}",
+            "\t\tReturn 0",
+            "\tEnd",
+            "End",
+            "",
+            "Function Main:Int()",
+            "\tNew ${1:MyApp}",
+            "\tReturn 0",
+            "End"
+        ],
+        "description": "Basic Mojo application template"
+    },
+    "Main Function": {
+        "prefix": "main",
+        "body": [
+            "Function Main:Int()",
+            "\t${0:' Program entry point}",
+            "\tReturn 0",
+            "End"
+        ],
+        "description": "Main function entry point"
+    },
+    "Comment Block": {
+        "prefix": "remblock",
+        "body": [
+            "#Rem",
+            "\t${0:' Comment block}",
+            "#End"
+        ],
+        "description": "Multi-line comment block"
+    },
+    "For Each Loop": {
+        "prefix": "foreach",
+        "body": [
+            "For Local ${1:item}:${2:Type} = EachIn ${3:collection}",
+            "\t${0:' Loop body}",
+            "Next"
+        ],
+        "description": "For-each loop through collection"
+    },
+    "Constructor": {
+        "prefix": "new",
+        "body": [
+            "Method New(${1:})",
+            "\t${0:' Constructor body}",
+            "End"
+        ],
+        "description": "Constructor method"
+    },
+    "Abstract Method": {
+        "prefix": "abstract",
+        "body": [
+            "Method ${1:MethodName}:${2:Void}(${3:}) Abstract"
+        ],
+        "description": "Abstract method declaration"
+    },
+    "Exit Statement": {
+        "prefix": "exit",
+        "body": [
+            "Exit"
+        ],
+        "description": "Exit from loop or function"
+    },
+    "Continue Statement": {
+        "prefix": "continue",
+        "body": [
+            "Continue"
+        ],
+        "description": "Continue to next iteration"
+    },
+    "Return Statement": {
+        "prefix": "return",
+        "body": [
+            "Return ${1:value}"
+        ],
+        "description": "Return from function/method"
+    },
+    "DrawText": {
+        "prefix": "drawtext",
+        "body": [
+            "DrawText ${1:\"${2:text}\"}, ${3:x}, ${4:y}"
+        ],
+        "description": "Draw text at position"
+    },
+    "DrawRect": {
+        "prefix": "drawrect",
+        "body": [
+            "DrawRect ${1:x}, ${2:y}, ${3:width}, ${4:height}"
+        ],
+        "description": "Draw a rectangle"
+    },
+    "DrawCircle": {
+        "prefix": "drawcircle",
+        "body": [
+            "DrawCircle ${1:x}, ${2:y}, ${3:radius}"
+        ],
+        "description": "Draw a circle"
+    },
+    "DrawLine": {
+        "prefix": "drawline",
+        "body": [
+            "DrawLine ${1:x1}, ${2:y1}, ${3:x2}, ${4:y2}"
+        ],
+        "description": "Draw a line"
+    },
+    "DrawImage": {
+        "prefix": "drawimage",
+        "body": [
+            "DrawImage ${1:image}, ${2:x}, ${3:y}"
+        ],
+        "description": "Draw an image at position"
+    },
+    "LoadImage": {
+        "prefix": "loadimage",
+        "body": [
+            "Local ${1:image}:Image = LoadImage(\"${2:path/to/image.png}\")"
+        ],
+        "description": "Load an image"
+    },
+    "LoadSound": {
+        "prefix": "loadsound",
+        "body": [
+            "Local ${1:sound}:Sound = LoadSound(\"${2:path/to/sound.wav}\")"
+        ],
+        "description": "Load a sound"
+    },
+    "PlaySound": {
+        "prefix": "playsound",
+        "body": [
+            "PlaySound ${1:sound}"
+        ],
+        "description": "Play a sound"
+    },
+    "SetColor": {
+        "prefix": "setcolor",
+        "body": [
+            "SetColor ${1:255}, ${2:255}, ${3:255}"
+        ],
+        "description": "Set drawing color (RGB)"
+    },
+    "SetAlpha": {
+        "prefix": "setalpha",
+        "body": [
+            "SetAlpha ${1:1.0}"
+        ],
+        "description": "Set alpha transparency"
+    },
+    "Cls": {
+        "prefix": "cls",
+        "body": [
+            "Cls ${1:0}, ${2:0}, ${3:0}"
+        ],
+        "description": "Clear screen with color"
+    },
+    "KeyDown": {
+        "prefix": "keydown",
+        "body": [
+            "If KeyDown(KEY_${1:SPACE})",
+            "\t${0:' Key pressed}",
+            "End"
+        ],
+        "description": "Check if key is down"
+    },
+    "KeyHit": {
+        "prefix": "keyhit",
+        "body": [
+            "If KeyHit(KEY_${1:SPACE})",
+            "\t${0:' Key hit once}",
+            "End"
+        ],
+        "description": "Check if key was just pressed"
+    },
+    "TouchDown": {
+        "prefix": "touchdown",
+        "body": [
+            "If TouchDown(${1:0})",
+            "\tLocal ${2:x}:Int = TouchX(${1:0})",
+            "\tLocal ${3:y}:Int = TouchY(${1:0})",
+            "\t${0:' Touch handling}",
+            "End"
+        ],
+        "description": "Check if touch/mouse is down"
+    },
+    "MouseX and MouseY": {
+        "prefix": "mouse",
+        "body": [
+            "Local ${1:mouseX}:Int = MouseX()",
+            "Local ${2:mouseY}:Int = MouseY()"
+        ],
+        "description": "Get mouse coordinates"
+    },
+    "SetUpdateRate": {
+        "prefix": "setupdaterate",
+        "body": [
+            "SetUpdateRate ${1:60}"
+        ],
+        "description": "Set update rate (FPS)"
+    },
+    "Millisecs": {
+        "prefix": "millisecs",
+        "body": [
+            "Local ${1:time}:Int = Millisecs()"
+        ],
+        "description": "Get current time in milliseconds"
+    },
+    "Seed": {
+        "prefix": "seed",
+        "body": [
+            "Seed = ${1:Millisecs()}"
+        ],
+        "description": "Set random seed"
+    },
+    "Rnd": {
+        "prefix": "rnd",
+        "body": [
+            "Rnd(${1:0}, ${2:100})"
+        ],
+        "description": "Random number"
+    },
+    "List Declaration": {
+        "prefix": "list",
+        "body": [
+            "Local ${1:listName}:List<${2:Type}> = New List<${2:Type}>"
+        ],
+        "description": "Declare a list"
+    },
+    "Stack Declaration": {
+        "prefix": "stack",
+        "body": [
+            "Local ${1:stackName}:Stack<${2:Type}> = New Stack<${2:Type}>"
+        ],
+        "description": "Declare a stack"
+    },
+    "Map Declaration": {
+        "prefix": "map",
+        "body": [
+            "Local ${1:mapName}:StringMap<${2:Type}> = New StringMap<${2:Type}>"
+        ],
+        "description": "Declare a string map"
+    },
+    "Assert": {
+        "prefix": "assert",
+        "body": [
+            "Assert ${1:condition}, \"${2:Assertion failed}\""
+        ],
+        "description": "Assert with message"
+    },
+    "Error": {
+        "prefix": "error",
+        "body": [
+            "Error \"${1:Error message}\""
+        ],
+        "description": "Throw an error"
+    },
+    "Throw": {
+        "prefix": "throw",
+        "body": [
+            "Throw New ${1:Throwable}(\"${2:Error message}\")"
+        ],
+        "description": "Throw an exception"
+    },
+    "Strict Mode": {
+        "prefix": "strict",
+        "body": [
+            "Strict"
+        ],
+        "description": "Enable strict mode"
+    },
+    "Module Definition": {
+        "prefix": "module",
+        "body": [
+            "Module ${1:modulename}",
+            "",
+            "${0:' Module contents}",
+            ""
+        ],
+        "description": "Define a module"
+    },
+    "Extern Declaration": {
+        "prefix": "extern",
+        "body": [
+            "Extern",
+            "",
+            "Function ${1:FunctionName}:${2:Void}(${3:}) = \"${4:native_name}\"",
+            "",
+            "Public"
+        ],
+        "description": "Declare external function"
+    },
+    "JSON Parse": {
+        "prefix": "jsonparse",
+        "body": [
+            "Local ${1:data}:JsonObject = JsonObject.Parse(${2:jsonString})"
+        ],
+        "description": "Parse JSON string"
+    },
+    "HTTP Request": {
+        "prefix": "httprequest",
+        "body": [
+            "Local ${1:request}:HttpRequest = New HttpRequest(\"${2:GET}\", \"${3:url}\")",
+            "${1:request}.Send()"
+        ],
+        "description": "Create HTTP request"
+    },
+    "Game Loop": {
+        "prefix": "gameloop",
+        "body": [
+            "Method OnUpdate:Int()",
+            "\t' Update game logic",
+            "\t${1:UpdatePlayer()}",
+            "\t${2:UpdateEnemies()}",
+            "\tReturn 0",
+            "End",
+            "",
+            "Method OnRender:Int()",
+            "\t' Clear screen",
+            "\tCls ${3:0, 0, 0}",
+            "\t",
+            "\t' Draw game objects",
+            "\t${4:DrawPlayer()}",
+            "\t${5:DrawEnemies()}",
+            "\t",
+            "\tReturn 0",
+            "End"
+        ],
+        "description": "Basic game loop structure"
+    },
+    "Collision Check": {
+        "prefix": "collision",
+        "body": [
+            "If ${1:x1} < ${2:x2} + ${3:w2} And ${1:x1} + ${4:w1} > ${2:x2} And ${5:y1} < ${6:y2} + ${7:h2} And ${5:y1} + ${8:h1} > ${6:y2}",
+            "\t${0:' Collision detected}",
+            "End"
+        ],
+        "description": "Rectangle collision check (AABB)"
+    },
+    "Distance Calculation": {
+        "prefix": "distance",
+        "body": [
+            "Local ${1:dist}:Float = Sqrt((${2:x2} - ${3:x1}) * (${2:x2} - ${3:x1}) + (${4:y2} - ${5:y1}) * (${4:y2} - ${5:y1}))"
+        ],
+        "description": "Calculate distance between two points"
+    }
+}

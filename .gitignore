@@ -1,0 +1,27 @@
+# Compiled output
+out/
+*.vsix
+
+# Dependencies
+node_modules/
+server/node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# VS Code test installation
+.vscode-test/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Temporary files
+*.tmp
+*.temp
+.todo-trancc-update.json
+test-source.cxs
+
+# Lock files (optional - include package-lock.json if you want reproducible builds)
+# package-lock.json

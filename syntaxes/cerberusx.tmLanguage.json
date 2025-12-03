@@ -1,0 +1,195 @@
+{
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "CerberusX",
+    "scopeName": "source.cerberusx",
+    "patterns": [
+        {
+            "include": "#comments"
+        },
+        {
+            "include": "#strings"
+        },
+        {
+            "include": "#keywords"
+        },
+        {
+            "include": "#constants"
+        },
+        {
+            "include": "#module-functions"
+        },
+        {
+            "include": "#module-classes"
+        },
+        {
+            "include": "#functions"
+        },
+        {
+            "include": "#operators"
+        },
+        {
+            "include": "#numbers"
+        }
+    ],
+    "repository": {
+        "comments": {
+            "patterns": [
+                {
+                    "name": "comment.line.rem.cerberusx",
+                    "match": "(?i)\\b(rem)\\b.*$"
+                },
+                {
+                    "name": "comment.line.apostrophe.cerberusx",
+                    "match": "'.*$"
+                },
+                {
+                    "name": "comment.block.cerberusx",
+                    "begin": "#rem\\b",
+                    "end": "#end\\b",
+                    "patterns": []
+                }
+            ]
+        },
+        "strings": {
+            "patterns": [
+                {
+                    "name": "string.quoted.double.cerberusx",
+                    "begin": "\"",
+                    "end": "\""
+                }
+            ]
+        },
+        "keywords": {
+            "patterns": [
+                {
+                    "name": "keyword.control.cerberusx",
+                    "match": "(?i)\\b(if|then|else|elseif|endif|end|while|wend|repeat|until|forever|for|to|step|next|select|case|default|exit|continue|return|try|catch|throw)\\b"
+                },
+                {
+                    "name": "keyword.declaration.cerberusx",
+                    "match": "(?i)\\b(class|method|function|field|global|local|const|interface|implements|extends|abstract|final|private|public|protected|property|import|module|extern)\\b"
+                },
+                {
+                    "name": "storage.type.cerberusx",
+                    "match": "(?i)\\b(int|float|string|bool|void|object|array)\\b"
+                },
+                {
+                    "name": "keyword.other.cerberusx",
+                    "match": "(?i)\\b(new|self|super|null|true|false|strict|print|error)\\b"
+                }
+            ]
+        },
+        "constants": {
+            "patterns": [
+                {
+                    "name": "constant.language.cerberusx",
+                    "match": "(?i)\\b(null|true|false|self|super)\\b"
+                }
+            ]
+        },
+        "module-functions": {
+            "patterns": [
+                {
+                    "name": "support.function.mojo.cerberusx",
+                    "match": "(?i)\\b(DrawImage|DrawImageRect|DrawLine|DrawRect|DrawOval|DrawCircle|DrawEllipse|DrawPoly|DrawPoint|DrawText|SetColor|SetAlpha|SetBlend|LoadImage|CreateImage|GrabImage|Scale|Rotate|Translate|PushMatrix|PopMatrix|Transform|Cls|SetScissor|BeginRender|EndRender)\\b"
+                },
+                {
+                    "name": "support.function.input.cerberusx",
+                    "match": "(?i)\\b(KeyDown|KeyHit|GetChar|MouseX|MouseY|MouseDown|MouseHit|TouchX|TouchY|TouchDown|TouchHit|JoyX|JoyY|JoyZ|JoyDown|JoyHit|AccelX|AccelY|AccelZ)\\b"
+                },
+                {
+                    "name": "support.function.audio.cerberusx",
+                    "match": "(?i)\\b(LoadSound|PlaySound|StopSound|PauseSound|ResumeSound|SetVolume|SetPan|SetRate|PlayMusic|StopMusic|PauseMusic|ResumeMusic)\\b"
+                },
+                {
+                    "name": "support.function.app.cerberusx",
+                    "match": "(?i)\\b(OnCreate|OnUpdate|OnRender|OnResume|OnSuspend|OnBack|OnClose|UpdateAsyncEvents|MilliSecs|DeviceWidth|DeviceHeight|SetUpdateRate)\\b"
+                },
+                {
+                    "name": "support.function.file.cerberusx",
+                    "match": "(?i)\\b(LoadString|SaveString|LoadState|SaveState|FileType|FileSize|FileTime|DeleteFile|CreateDir|DeleteDir|CopyFile|GetEnv|SetEnv)\\b"
+                },
+                {
+                    "name": "support.function.math.cerberusx",
+                    "match": "(?i)\\b(Sin|Cos|Tan|ASin|ACos|ATan|ATan2|Sqrt|Floor|Ceil|Pow|Log|Exp|Abs|Sgn|Min|Max|Clamp)\\b"
+                },
+                {
+                    "name": "support.function.string.cerberusx",
+                    "match": "(?i)\\b(Length|Find|FindLast|Trim|Join|Split|Replace|ToLower|ToUpper|StartsWith|EndsWith|Contains|FromChar|ToChars)\\b"
+                },
+                {
+                    "name": "support.function.data.cerberusx",
+                    "match": "(?i)\\b(Push|Pop|Insert|Remove|RemoveFirst|RemoveLast|Get|Set|Clear|Count|IsEmpty|Contains|Sort|Reverse|Slice|Resize|ToArray)\\b"
+                }
+            ]
+        },
+        "module-classes": {
+            "patterns": [
+                {
+                    "name": "support.class.mojo.cerberusx",
+                    "match": "(?i)\\b(App|Image|Sound|Canvas|Font|Surface|Texture|Material|Light|Camera|Scene|Entity|Sprite|Layer)\\b"
+                },
+                {
+                    "name": "support.class.data.cerberusx",
+                    "match": "(?i)\\b(List|Stack|Set|Map|IntMap|StringMap|IntList|FloatList|StringList)\\b"
+                },
+                {
+                    "name": "support.class.stream.cerberusx",
+                    "match": "(?i)\\b(Stream|FileStream|DataStream|DataBuffer)\\b"
+                }
+            ]
+        },
+        "functions": {
+            "patterns": [
+                {
+                    "name": "entity.name.function.cerberusx",
+                    "match": "(?i)\\b(function|method)\\s+([A-Za-z_][A-Za-z0-9_]*)",
+                    "captures": {
+                        "1": {
+                            "name": "keyword.declaration.cerberusx"
+                        },
+                        "2": {
+                            "name": "entity.name.function.cerberusx"
+                        }
+                    }
+                },
+                {
+                    "name": "entity.name.function.call.cerberusx",
+                    "match": "\\b([A-Z][A-Za-z0-9_]*)(?=\\s*\\()"
+                }
+            ]
+        },
+        "operators": {
+            "patterns": [
+                {
+                    "name": "keyword.operator.cerberusx",
+                    "match": "(?i)\\b(mod|shl|shr|and|or|not)\\b"
+                },
+                {
+                    "name": "keyword.operator.arithmetic.cerberusx",
+                    "match": "\\+|\\-|\\*|\\/|\\^|\\="
+                },
+                {
+                    "name": "keyword.operator.comparison.cerberusx",
+                    "match": "\\=\\=|\\<\\>|\\!\\=|\\<\\=|\\>\\=|\\<|\\>"
+                }
+            ]
+        },
+        "numbers": {
+            "patterns": [
+                {
+                    "name": "constant.numeric.hex.cerberusx",
+                    "match": "\\$[0-9A-Fa-f]+"
+                },
+                {
+                    "name": "constant.numeric.float.cerberusx",
+                    "match": "\\b[0-9]+\\.[0-9]+\\b"
+                },
+                {
+                    "name": "constant.numeric.integer.cerberusx",
+                    "match": "\\b[0-9]+\\b"
+                }
+            ]
+        }
+    }
+}

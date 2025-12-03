@@ -1,0 +1,208 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ main ]
+  workflow_dispatch: {}
+
+jobs:
+  generate-icons:
+    name: Generate Icons (release only)
+    publish:
+      name: Package & Publish Extension (release)
+      runs-on: windows-latest
+      needs: [generate-icons, test]
+      if: github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main'
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v4
+
+        - name: Download generated icons
+          uses: actions/download-artifact@v4
+          with:
+            name: icons
+
+        - name: Place icons into resources folder (PowerShell)
+          shell: pwsh
+          run: |
+            Write-Host "Copying icons into resources/"
+            if (Test-Path -Path ./icons) {
+              Copy-Item -Path ./icons/* -Destination ./resources -Recurse -Force -ErrorAction SilentlyContinue
+            }
+
+        - name: Temporarily move .vscodeignore (so icons are included in package)
+          shell: pwsh
+          run: |
+            if (Test-Path -Path .vscodeignore) {
+              Move-Item -Path .vscodeignore -Destination .vscodeignore.ci -Force
+            }
+
+        - name: Use Node.js 18
+          uses: actions/setup-node@v4
+          with:
+            node-version: '18'
+
+        - name: Install dependencies
+          run: npm ci
+
+        - name: Build extension
+          run: npm run compile --if-present
+
+        - name: Package extension (.vsix)
+          shell: pwsh
+          run: |
+            npm install -g vsce || Write-Host "failed to install vsce globally, continuing with npx"
+            npx vsce package
+
+        - name: Publish extension (optional)
+          shell: pwsh
+          env:
+            VSCE_TOKEN: ${{ secrets.VSCE_TOKEN }}
+          run: |
+            if ($env:VSCE_TOKEN) {
+              npx vsce publish -p $env:VSCE_TOKEN
+            } else {
+              Write-Host "VSCE_TOKEN not set; skipping publish step. .vsix is available as a package artifact."
+            }
+
+        - name: Upload .vsix artifact
+          uses: actions/upload-artifact@v4
+          with:
+            name: vsix
+            path: '*.vsix'
+            retention-days: 7
+
+        - name: Restore .vscodeignore
+          shell: pwsh
+          run: |
+            if (Test-Path -Path .vscodeignore.ci) {
+              Move-Item -Path .vscodeignore.ci -Destination .vscodeignore -Force
+            }
+  generate-gifs:
+    name: Generate GIFs from raw recordings
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install ffmpeg and gifsicle
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg gifsicle
+
+      - name: Ensure assets folder
+        run: mkdir -p docs/assets
+
+      - name: Convert MP4s to optimized GIFs
+        run: |
+          shopt -s nullglob || true
+          for f in docs/raw/*.mp4; do
+            echo "Processing $f"
+            base=$(basename "$f" .mp4)
+            out="docs/assets/${base}.gif"
+            outopt="docs/assets/${base}.optim.gif"
+            # Use moderate defaults to keep GIF sizes small: 12 fps, 600px width
+            ffmpeg -y -i "$f" -vf "fps=12,scale=600:-1:flags=lanczos" -loop 0 "$out"
+            gifsicle -O3 --colors 256 "$out" -o "$outopt"
+          done
+
+      - name: Upload generated GIFs
+        uses: actions/upload-artifact@v4
+        with:
+          name: gifs
+          path: docs/assets/*.optim.gif
+  integration:
+    name: Integration Tests (CI-only)
+    runs-on: ubuntu-latest
+    needs: test
+    if: github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build extension and tests
+        run: |
+          npm run compile --if-present
+          npm run build:test
+
+      - name: Run integration tests (headless)
+        # xvfb-run helps run Electron/VS Code headlessly on Linux runners
+        run: |
+          sudo apt-get update && sudo apt-get install -y xvfb
+          xvfb-run --auto-servernum --server-args='-screen 0 1280x1024x24' npm run test:integration
+
+  publish:
+    name: Package & Publish Extension (release)
+    runs-on: ubuntu-latest
+    needs: [generate-icons, test]
+    if: github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download generated icons
+        uses: actions/download-artifact@v4
+        with:
+          name: icons
+
+      - name: Place icons into resources folder
+        run: |
+          # downloaded artifacts are placed in $GITHUB_WORKSPACE/icons
+          if [ -d ./icons ]; then
+            cp -R icons/* resources/ || true
+          fi
+
+      - name: Temporarily move .vscodeignore (so icons are included in package)
+        run: |
+          if [ -f .vscodeignore ]; then
+            mv .vscodeignore .vscodeignore.ci || true
+          fi
+
+      - name: Use Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build extension
+        run: npm run compile --if-present
+
+      - name: Package extension (.vsix)
+        run: |
+          npm install -g vsce || true
+          npx vsce package
+
+      - name: Publish extension (optional)
+        env:
+          VSCE_TOKEN: ${{ secrets.VSCE_TOKEN }}
+        run: |
+          if [ -n "${VSCE_TOKEN}" ]; then
+            npx vsce publish -p "${VSCE_TOKEN}"
+          else
+            echo "VSCE_TOKEN not set; skipping publish step. .vsix is available as a package artifact."
+          fi
+
+      - name: Upload .vsix artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: vsix
+          path: '*.vsix'
+
+      - name: Restore .vscodeignore
+        run: |
+          if [ -f .vscodeignore.ci ]; then
+            mv .vscodeignore.ci .vscodeignore || true
+          fi
