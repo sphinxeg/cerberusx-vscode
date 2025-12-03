@@ -3,7 +3,14 @@
 
 A comprehensive VS Code extension providing full language support for CerberusX programming language.
 
-This extension includes syntax highlighting, IntelliSense, code snippets, integrated build tools, and **debugging capabilities** to enhance your CerberusX game development workflow.
+This extension includes:
+- Syntax highlighting
+- IntelliSense
+- Code snippets
+- Integrated build tools
+- **Debugging capabilities**
+
+Enhance your CerberusX game development workflow with professional VS Code integration.
 
 ## Features
 
