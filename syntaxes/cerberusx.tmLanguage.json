@@ -103,7 +103,7 @@
                 },
                 {
                     "name": "support.function.app.cerberusx",
-                    "match": "(?i)\\b(OnCreate|OnUpdate|OnRender|OnResume|OnSuspend|OnBack|OnClose|UpdateAsyncEvents|MilliSecs|DeviceWidth|DeviceHeight|SetUpdateRate)\\b"
+                    "match": "(?i)\\b(OnCreate|OnUpdate|OnRender|OnResume|OnSuspend|OnBack|OnClose|UpdateAsyncEvents|MilliSecs|DeviceWidth|DeviceHeight|SetUpdateRate|SetSwapInterval)\\b"
                 },
                 {
                     "name": "support.function.file.cerberusx",

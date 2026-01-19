@@ -1,0 +1,31 @@
+# Function SetSwapInterval
+
+Language: 
+> Function SetSwapInterval
+
+Sets the swap interval for vertical synchronization (VSync).
+
+>> Syntax
+
+SetSwapInterval(value:Int)
+
+>> Description
+
+Use this function to enable or disable vertical synchronization (VSync). When the value is 0, VSync is disabled (allowing uncapped frame rate); when the value is 1, VSync is enabled (syncs to display refresh rate).
+
+This is useful for controlling frame rate and reducing screen tearing in your game.
+
+>> Example
+
+<pre>
+Method OnCreate:Int()
+	SetUpdateRate(60)
+	SetSwapInterval(1) ' Enable VSync
+	Return 0
+End
+</pre>
+
+>> See also
+
+[[SetUpdateRate]]
+

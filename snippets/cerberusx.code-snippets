@@ -239,6 +239,13 @@
         ],
         "description": "Basic Mojo application template"
     },
+    "SetSwapInterval": {
+        "prefix": "setswapinterval",
+        "body": [
+            "SetSwapInterval ${1:1}"
+        ],
+        "description": "Enable or disable VSync (0 = off, 1 = on)"
+    },
     "Main Function": {
         "prefix": "main",
         "body": [

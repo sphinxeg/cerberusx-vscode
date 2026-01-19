@@ -2,7 +2,7 @@
     "name": "cerberusx",
     "displayName": "CerberusX",
     "description": "CerberusX Programming Language extension for VS Code",
-    "version": "0.3.1",
+    "version": "0.3.2",
     "publisher": "AncientSoft",
     "author": {
         "name": "Sphinx (Maher F. Farag)",
@@ -140,7 +140,9 @@
                     "default": "\\\\b[A-Za-z_][A-Za-z0-9_]{2,}\\\\b",
                     "scope": "application",
                     "order": 100,
-                    "tags": ["advanced"],
+                    "tags": [
+                        "advanced"
+                    ],
                     "description": "[Advanced] A JS-style string regex used to extract tokens from .cerberusdoc files. Default extracts words with length >= 3. Must be a valid RegExp source string (without slashes)."
                 },
                 "cerberusx.snippetsFile": {
@@ -148,7 +150,9 @@
                     "default": ".vscode/cerberusx-snippets.code-snippets",
                     "scope": "application",
                     "order": 101,
-                    "tags": ["advanced"],
+                    "tags": [
+                        "advanced"
+                    ],
                     "description": "[Advanced] Where generated snippets are written (relative to workspace root)."
                 },
                 "cerberusx.PathOfCerberusX": {
@@ -162,7 +166,9 @@
                     "default": "trancc",
                     "scope": "application",
                     "order": 102,
-                    "tags": ["advanced"],
+                    "tags": [
+                        "advanced"
+                    ],
                     "description": "[Advanced] Fallback path to the trancc CLI executable. Auto-detected, no need to change."
                 },
                 "cerberusx.tranccBuildArgs": {
@@ -170,7 +176,9 @@
                     "default": "-build -config=${mode} -target=${target} ${file}",
                     "scope": "application",
                     "order": 103,
-                    "tags": ["advanced"],
+                    "tags": [
+                        "advanced"
+                    ],
                     "description": "[Advanced] Template for build arguments. Default works automatically."
                 },
                 "cerberusx.tranccRunArgs": {
@@ -178,7 +186,9 @@
                     "default": "-run -config=${mode} -target=${target} ${file}",
                     "scope": "application",
                     "order": 104,
-                    "tags": ["advanced"],
+                    "tags": [
+                        "advanced"
+                    ],
                     "description": "[Advanced] Template for run arguments. Default works automatically."
                 },
                 "cerberusx.tranccTargetMap": {
@@ -192,7 +202,9 @@
                     },
                     "scope": "application",
                     "order": 105,
-                    "tags": ["advanced"],
+                    "tags": [
+                        "advanced"
+                    ],
                     "description": "[Advanced] Platform target mappings. Default works automatically."
                 },
                 "cerberusx.tranccExecutableMap": {
@@ -204,7 +216,9 @@
                     },
                     "scope": "application",
                     "order": 106,
-                    "tags": ["advanced"],
+                    "tags": [
+                        "advanced"
+                    ],
                     "description": "[Advanced] OS-specific compiler names. Auto-detected, no need to change."
                 },
                 "cerberusx.testing": {
@@ -212,7 +226,9 @@
                     "default": false,
                     "scope": "application",
                     "order": 200,
-                    "tags": ["internal"],
+                    "tags": [
+                        "internal"
+                    ],
                     "deprecationMessage": "Internal use only. Do not modify.",
                     "description": "[Internal] Testing mode for developers only."
                 },
@@ -221,7 +237,9 @@
                     "default": "",
                     "scope": "application",
                     "order": 201,
-                    "tags": ["internal"],
+                    "tags": [
+                        "internal"
+                    ],
                     "deprecationMessage": "Internal use only. Do not modify.",
                     "description": "[Internal] For tests only."
                 },
@@ -234,7 +252,9 @@
                     ],
                     "scope": "application",
                     "order": 107,
-                    "tags": ["advanced"],
+                    "tags": [
+                        "advanced"
+                    ],
                     "description": "[Advanced] Where build output is shown. Default works automatically."
                 }
             }
